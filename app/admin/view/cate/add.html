@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>layui</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="__LAYUI__/lib/layui-v2.5.5/css/layui.css" media="all">
+		<link rel="stylesheet" href="__LAYUI__/css/public.css" media="all">
+		<style>
+			body {
+            background-color: #ffffff;
+        }
+    </style>
+	</head>
+	<body>
+		<div class="layui-form layuimini-form">
+			<form class="layui-form" action="" id="addGoodsForm">
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label" style="width: 200px;">父级分类</label>
+						<div class="layui-input-inline">
+							<select name="pid" id="classif"></select>
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label" style="width: 200px;">栏目名称</label>
+						<div class="layui-input-inline">
+							<input type="text" name="catename" lay-verify="required" lay-reqtext="栏目名不能为空" placeholder="请输入栏目名称" value=""
+							 class="layui-input">
+							<tip>填写栏目名称。</tip>
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label" style="width: 200px;">栏目类型</label>
+						<div class="layui-input-inline">
+							<input type="radio" name="type" value="1" title="列表" checked="">
+							<input type="radio" name="type" value="2" title="单页"></div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label" style="width: 200px;"></label>
+
+						<div class="layui-input-inline">
+							<button type="submit" class="layui-btn" lay-submit lay-filter="saveBtn">确认保存</button>
+
+						</div>
+					</div>
+
+
+				</div>
+
+			</form>
+		</div>
+		<script src="__LAYUI__/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+		<script src="__LAYUI__/lib/jquery-3.4.1/jquery-3.4.1.min.js" charset="utf-8"></script>
+		<script src="__LAYUI__/js/common.js" charset="utf-8"></script>
+
+		<script>
+			layui.use(['layer', 'form', 'layedit', 'laydate', 'upload'], function() {
+				var form = layui.form,
+					layer = layui.layer,
+					layedit = layui.layedit,
+					laydate = layui.laydate,
+					upload = layui.upload,
+					$ = layui.$;
+
+				function _classif(res = []) {
+					// res 分类数据 先期模拟
+					let temps = '<option value="0">| 顶级菜单</option>';
+					var data = {$cateres};
+					let toTrees = toTree(data);
+					// console.log(toTrees);
+					for (let item of toTrees) {
+						temps += `<optgroup  data-id="${item["id"]}">`;
+						temps += `<option  data-id="${item['id']}" value="${item['id']}">-| ${item["name"]}</option>`
+						if (item['children'] && item['children'].length > 0) {
+							for (let child of item['children']) {
+								temps +=
+									`<option  data-id="${child['id']}" value="${child['id']}"> &nbsp;&nbsp;&nbsp;--| ${child["name"]} </option>`
+							}
+						}
+						temps += `</optgroup>`;
+					}
+					$('#classif').html(temps)
+					form.render('select');
+				};
+
+
+				function queryClassif() { // 请求分类 后端接口
+					let url = '';
+					layObj.get(url, function(res) {
+						// console.log(res);
+					}); // 封装的ajax
+					_classif()
+				};
+				queryClassif(); // 获取后端分类数据
+				//监听提交
+				form.on('submit(saveBtn)', function(data) {
+					data = data.field;
+					$.ajax({
+						type: 'post',
+						data: data,
+						url: "{:url('admin/cate/add')}",
+						success: function(result) {
+							if (result.code == 1) {
+								layer.msg(result.msg, {
+										icon: 6,
+										time: 2000
+									},
+									function() {
+										//关闭当前窗口并刷新父窗口
+										close("yes");
+									});
+							}
+
+
+						}
+					});
+					return false;
+				});
+
+				function close(status) {
+					if (status == "yes") {
+						window.parent.location.reload(); //刷新父页面
+						var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+						parent.layer.close(index);
+					}
+					var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+					parent.layer.close(index);
+				}
+
+			});
+		</script>
+	</body>
+</html>

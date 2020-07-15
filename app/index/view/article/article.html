@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+
+<!--
+
+委员会简介页面
+
+-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>中国职业技术教育学会国际合作交流工作委员会-委员会简介</title>
+    <meta name="keywords" content="中国职业技术教育学会国际合作交流工作委员会">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="中国职业技术教育学会国际合作交流工作委员会">
+
+    <link rel="stylesheet" href="./css/comm.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+
+    <link rel="stylesheet" type="text/css" href="css/style2.css"/>
+    <!--[if lt IE 9]>
+    <script r='m'>document.createElement("section")</script><![endif]-->
+    <style>
+        /*内容部分*/
+
+        .listcontent {
+            width: 1200px;
+            margin: 20px auto 0px auto;
+        }
+
+        /*内容部分左侧按钮*/
+
+        .listan {
+            width: 270px;
+            float: left;
+            margin-right: 30px;
+        }
+
+        .listan_bt {
+            width: 270px;
+            height: 80px;
+            line-height: 80px;
+            background-color: #FBAD1B;
+            font-size: 30px;
+            text-align: center;
+            letter-spacing: 3px;
+            color: #FFF
+        }
+
+        .listan_nav {
+            width: 270px;
+            float: left;
+            height: auto;
+        }
+
+        .listan_nav ul {
+            wdith: 270px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .listan_nav ul li {
+            width: 270px;
+            float: left;
+            height: 50px;
+            line-height: 50px;
+            background-color: #0099ff;
+            font-size: 16px;
+            text-align: center;
+            letter-spacing: 3px;
+            color: #FFF;
+            border-top: #CCC 1px solid;
+        }
+
+        .listan_nav ul li a {
+            width: 270px;
+            float: left;
+            height: 50px;
+            line-height: 50px;
+            background-color: #0099ff;
+            font-size: 16px;
+            text-align: center;
+            letter-spacing: 3px;
+            color: #FFF;
+            border-top: #CCC 1px solid;
+        }
+
+        .listan_nav ul li a:hover {
+            background-color: #1975d2;
+            font-size: 16px;
+            text-align: center;
+            letter-spacing: 3px;
+            color: #FFF
+        }
+
+        .contentpart {
+            width: 1200px;
+            margin: 20px auto 0px auto;
+        }
+
+        .contentbbg_yw {
+            width: 1200px;
+            height: 42px;
+            background-image: url(./images/lmbg.jpg)
+        }
+
+        .contentbbg_bt {
+            width: 800px;
+            height: 42px;
+            line-height: 40px;
+            color: #333;
+            float: left;
+            font-size: 18px;
+            letter-spacing: 1px;
+            font-weight: 550;
+        }
+
+        .contentbbg_more {
+            width: 120px;
+            height: 42px;
+            line-height: 40px;
+            color: #333;
+            float: right;
+            text-align: right;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        /*内容部分右侧*/
+
+        .listnr {
+            width: 900px;
+            float: right;
+        }
+
+        .listnr_ggtz {
+            width: 900;
+            float: right;
+        }
+
+        .listnrtb_ggtz {
+            width: 900px;
+            height: 42px;
+            background-image: url(./images/lmbg.jpg)
+        }
+
+        .listnr_list {
+            width: 900px;
+            height: auto;
+            min-height: 660px;
+            margin-top: 20px;
+            float: right;
+        }
+
+        .listnr_list ul {
+            width: 900px;
+            float: left;
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .listnr_list ul li {
+            width: 900px;
+            float: left;
+            line-height: 40px;
+        }
+
+        /*内容部分右侧-大段文字*/
+
+        .neirong_bt {
+            width: 96%;
+            height: 50px;
+            color: #333;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            clear: both;
+        }
+
+        .neirong_wz {
+            width: 96%;
+            height: auto;
+            min-height: 400px;
+            color: #333;
+            margin: 0px auto;
+            text-align: left;
+            font-size: 16px;
+            line-height: 33px;
+        }
+
+        /*通知的更多*/
+
+        .contentlm_more {
+            width: 80px;
+            height: 42px;
+            line-height: 40px;
+            color: #333;
+            float: right;
+            text-align: right;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="index" id="app">
+    <!-- 导入头部   导航栏 -->
+    {include file="common/index"}
+
+    <!--正文显示部分-->
+    <div class="listcontent">
+        <div class="listan">
+            <div class="listan_bt">委员会简介</div>
+            <!-- 	<div class="listan_nav">
+                    <ul>
+                        <li><a href="http://www.hcit.edu.cn/media/" target="_blank">委员会简介</a></li>
+                        <li><a href="http://www.hcit.edu.cn/info/" target="_blank">工作动态</a></li>
+                        <li><a href="http://www.hcit.edu.cn/news/" target="_blank">学术研究</a></li>
+                        <li><a href="http://www.hcit.edu.cn/department/" target="_blank">高层声音</a></li>
+                    </ul>
+                </div> -->
+        </div>
+
+        <!-- 公告通知 -->
+        <div class="listnr">
+            <div class="listnrtb_ggtz">
+                <div class="contentbbg_bt" style="font-size: 14px;"><a href="http://www.hcit.edu.cn/hxxw/">首页</a> &gt;
+                    <a href="http://www.hcit.edu.cn/news/">委员会简介</a> &gt;
+                </div>
+                <div class="contentlm_more">&nbsp;</div>
+            </div>
+            <div class="neirong_bt">委员会简介</div>
+            <div class="neirong_wz">
+                中国职业技术教育学会成立于1990年12月，是全国群众性职业技术教育团体和职业技术教育工作者自愿组成的群众性、学术性社会团体，接受中华人民共和国教育部和民政部的管理和业务指导，是国家级学术社会团体。2002年10月经会员代表大会选举产生了第二届理事会。2007年12月选举产生了第三届理事会，2013年2月在北京召开了第四次会员代表大会，选举产生了第四届理事会。2018年12月在北京召开了第五次会员代表大会，选举产生了第五届理事会。
+                  本会宗旨：
+                以马克思列宁主义、毛泽东思想、邓小平理论、“三个代表”重要思想、科学发展观和习近平新时代中国特色社会主义思想为指导思想和行动指南；始终坚持党的领导，全面贯彻党的教育方针,围绕中心、服务大局、紧贴基层；坚持政治强会、学术立会、服务兴会、依法治会；团结、调动、组织全国热心从事和支持职业技术教育事业的各界人士和社会力量，对接科技发展趋势和市场需求，推进新时代职业教育改革发展与现代化。遵循职业技术教育规律和“百花齐放，百家争鸣”的方针，开展学术活动，恪守学术道德，建设新时代新型中国职业技术教育学会，为实现“两个一百年”奋斗目标和中华民族伟大复兴的中国梦做出应有的贡献。
+                本会根据中国共产党章程的规定，设立中国共产党的组织，开展党的活动，为党组织的活动提供必要条件。 本会遵守宪法、法律、法规和国家政策，践行社会主义核心价值观，遵守社会道德风尚。   本会业务范围：
+                （一）组织开展职业技术教育重大理论与实践研究，充分发挥中国现代职业技术教育智库作用，为教育决策提供咨询意见和建议，开展业务咨询服务。
+                （二）承接政府转移职能，提供政府购买服务，在主管部门授权内，参与职业技术教育行业治理。 （三）经政府有关部门批准，组织开展标准制定、教育评价、项目评估、表彰奖励；组织举办展览展会、竞赛活动和其他有关活动。
+                （四）组织开展群众性职业技术教育科学研究，普及职业技术教育科学知识，介绍国内外科学研究动向，开展教育教学改革实验和学术交流，开展科研成果评价、认证与成果推广、发布等活动。
+                （五）组织搭建产教科、校企科合作、交流、研讨和服务平台，推进产教融合、校企合作，发布职业技术教育有关信息；组织开展继续教育和职业培训。
+                （六）组织开展职业技术教育宣传、典型经验推广，编辑出版发行有关书刊和资料。 （七）组织开展对香港、澳门和台湾地区及国外的职业技术教育交流与合作。
+                （八）规范管理所属分支机构和实体机构，会同省（自治区、直辖市）职业技术教育学会、行业职业技术教育协（学）会开展相关工作，组织开展行业自律、行业监测等工作。
+                （九）依法依规开展与本会宗旨一致的相关社会服务活动。   本会主办刊物：
+                本会与教育部职业技术教育中心研究所和高等教育出版社共同主办《中国职业技术教育》杂志，设有综合、教学、培训三个版，为旬刊。办会宗旨是宣传教育方针、交流科研成果、推广经验、沟通信息。
+                  《中国职业技术教育学会动态》系内部月刊，介绍学会及其分支机构和各地方职教学会、行业职教学会等团体会员开展的群众性学术活动情况。
+                  中国职业技术教育学会自成立以来，积极开展了国内外交流与合作，交流了经验，增进了友谊。在新形势下，本会将进一步加强职业教育学术研究，扩大对外交流与合作，为提高教育质量促进我国职业技术教育健康持续发展做出自己的贡献！
+                  中国职业技术教育学会秘书处、学术委员会秘书处、培训交流部、对外合作与信息服务部、中国职业技术教育网联系方式如下：   学会秘书处   地址：北京市朝阳区惠新东街4号 富盛大厦19层   邮编：100029
+                  电话：010-58556527、58556528   传真：010-58556527、58556528   网址：www.chinazy.org​   电邮：zjxh2002@163.com
+                  学术委员会秘书处 地址：石家庄市东岗路99号 河北省职教研究所
+                  邮编：410005   电话：0311-86267107、85872748   传真：0311-85872748   电邮：xshw@hebtu.edu.cn   培训交流部
+                  地址：北京朝阳区惠新东街8号院2号楼403室   邮编：100029   电话：010-84644516 、84630224   传真：010-84630224   电邮：PXJL2003@163.COM
+                  对外合作与信息服务部、中国职业技术教育网编辑运营中心   地址：北京市朝阳区慧忠路5号远大中心C座17层
+                  邮编：100101   电话：010-62389019   电邮：chinazyorg@chinazy.org
+
+                <br>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <!--正文显示结束-->
+    <div id="footer" class="hidden-xs hidden-sm hidden-md">
+        <div class="container">
+            <div class="row message-padding">
+                <div class="col-lg-9 col-md-9 col-sm-11 col-xs-12">
+                    <div class="row">
+                        <div class="col-lg-2 phone"><img src="images/phone.svg" style="padding-right: 5px;"><span>010-88888888</span>
+                        </div>
+                        <div class="col-lg-3 emailw"><img src="images/email.svg" style="padding-right: 3px;"><a
+                                href="mailto:888@126.com" target="_blank">888@126.com</a></div>
+                        <div class="col-lg-6 phone"><img src="images/address.svg" style="padding-right: 5px;"><span>中国职业技术教育网国际合作交流工作委员会</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3 copyright icp-t">
+                            <a href="#" target="_blank" style="text-decoration:none;"></a>·<a href="#" target="_blank">中国职业技术教育网国际合作交流工作委员会</a>承制
+                        </div>
+                        <div class="col-lg-3 copyright">版权所有©中国职业技术教育网国际合作交流工作委员会</div>
+                        <div class="col-lg-3 col-xs-6 copyright icp-w"><a href="http://www.miitbeian.gov.cn/"
+                                                                          target="_blank">京ICP备：88888888号</a></div>
+
+                        <div class="col-lg-2 copyright"><img src="images/foot_admin.svg" style="padding-right: 5px;"><a
+                                href="admin_login.aspx" target="_blank">管理登录</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 hidden-xs">
+                    <a href="#" target="_blank"><img src="images/blue.png"></a>
+                </div>
+                <div class="col-lg-2 col-md-2 hidden-xs hidden-sm">
+                    <div class="row" style="padding-top:15px;">
+                        <div class="col-lg-4" onmouseover="$('#gzwm').show();" onmouseout="$('#gzwm').hide();"><img
+                                src="images/weixin.png" alt="关注我们"></div>
+                        <div class="col-lg-4">
+                            <a href="#"><img src="images/xinlang.png" title="关注我们"></a>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="#"><img src="images/tengxun.png" title="关注我们"></a>
+                        </div>
+                    </div>
+                    <div style="position: absolute; top: -125px; left: -15%; display: none;" id="gzwm">
+                        <img src="" style="width: 100px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footerx" class="hidden-lg">
+        <div class="container">
+            <div class="row message-padding">
+                <div class="col-md-11 col-sm-11 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-6 phone"><span>电话：010-88888888</span></div>
+                        <div class="col-md-4 col-sm-4 col-xs-6 emailw"><a href="mailto:888@126.com" target="_blank">邮箱：888@126.com</a>
+                        </div>
+                        <div class="col-md-2 col-sm-2 col-xs-6 emailw"><a href="admin_login.aspx"
+                                                                          target="_blank">管理登录</a></div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-xs-12 phone"><span>地址：中国职业技术教育网国际合作交流工作委员会</span></div>
+
+                        <div class="col-md-4 col-sm-4 col-xs-5 unit"><a href="#" target="_blank">京ICP备：88888888号</a>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 col-xs-7 icp-t">镇江高职校<a href="#" target="_blank"
+                                                                              style="text-decoration:none;">信息处</a>·<a
+                                href="http://zjgzx.zje.net.cn/ninestudio/index.aspx" target="_blank">九点工作室</a>承制
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12 phone"><span>版权所有©中国职业技术教育网国际合作交流工作委员会</span></div>
+
+
+                    </div>
+                </div>
+                <div class="col-md-1 col-sm-1 hidden-xs">
+                    <a href="#" target="_blank"><img src="images/blue.png"></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- 版权部分 -->
+</body>
+
+</html>

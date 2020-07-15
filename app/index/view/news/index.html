@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html>
+<!--
+            这是主页
+    内容几乎都是活的
+
+-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>中国职业技术教育学会国际合作交流工作委员会</title>
+    <meta name="keywords" content="中国职业技术教育学会国际合作交流工作委员会">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="中国职业技术教育学会国际合作交流工作委员会">
+    <link rel="stylesheet" href="__INDEXCSS__/comm.css">
+    <link rel="stylesheet" href="__INDEXCSS__/style.css">
+    <link rel="stylesheet" type="text/css" href="__INDEXCSS__/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="__INDEXCSS__/bootstrap-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="__INDEXCSS__/style2.css"/>
+    <script language="javascript" src="__INDEXJS__/_sitegray.js"></script>
+    <script type="text/javascript" src="__INDEXJS__/vsbscreen.min.js" id="_vsbscreen" devices="pc|pad"></script>
+    <script type="text/javascript" src="__INDEXJS__/counter.js"></script>
+    <script src="__INDEXJS__/jquery.min.js"></script>
+    <script src="__INDEXJS__/bootstrap.min.js"></script>
+    <script src="__INDEXJS__/vue.js" type="text/javascript" charset="utf-8"></script>
+    <!--实现轮播图-->
+    <script type="text/javascript">
+        $(function () {
+            var timer = null; //声明一个全局定时器
+            var index = 0;
+            $(".next").click(function () { //下一张
+                next();
+            });
+            $(".prev").click(function () { //上一张
+                prev();
+            })
+
+            function next() {
+                index++;
+                if (index > 2) {
+                    /*
+                    当图片到最后一张时跳回第一张，本例中在最后一张中放入了第一张的图片，为实现无缝切换图片的效果。
+                    */
+                    $(".pic-list").animate({
+                        left: -(index) * 1280
+                    }, 500);
+                    index = 0;
+                    $(".pic-list").animate({
+                        left: 0
+                    }, 0); //
+                }
+                $(".pic-list").animate({
+                    left: -index * 1280
+                }, 500);
+                iconHover(index);
+            }
+
+            function prev() {
+                index--;
+                if (index < 0) {
+                    index = 5;
+                    $(".pic-list").animate({
+                        left: -(index + 1) * 1280
+                    }, 0);
+                }
+                $(".pic-list").animate({
+                    left: -index * 1280
+                }, 500);
+                iconHover(index);
+            }
+
+            function auto() {
+                timer = setInterval(function () { //设置自动播放的定时器
+                    next();
+                    iconHover(index);
+                }, 6000)
+            }
+
+            auto();
+            $("#slide").mouseover(function () { //鼠标移入 定时器取消
+                clearInterval(timer);
+                $('.btn').css("opacity", 0.5)
+            })
+            $("#slide").mouseleave(function () { //鼠标离开 定时器开启
+                auto();
+                $('.btn').css("opacity", 0)
+            })
+            //鼠标碰触圆点图标实现图片左右轮播
+            $(".icon-list li").mouseover(function () {
+                var index = $(this).index();
+                $(".pic-list").animate({
+                    left: -index * 1280
+                }, 500);
+                iconHover(index);
+            })
+
+            //实现被选图片对应圆点图标索引更新
+            function iconHover(index) {
+                $(".icon-list li").eq(index).addClass("active").siblings().removeClass("active");
+            }
+
+        })
+    </script>
+    <!-- 实现图片效果 -->
+    <style type="text/css">
+        .newlm {
+            width: 1280px;
+            height: 317px;
+            margin: 0px;
+        }
+
+        .newlm img {
+            transition: all 1s ease;
+        }
+
+        .newlm img:hover {
+            transform: scale(1.05);
+        }
+
+        .newlm_pic1 {
+            width: 610px;
+            height: 155px;
+            float: left;
+            margin: 0px 10px 6px 0px;
+            overflow: hidden;
+        }
+
+        .newlm_pic2 {
+            width: 305px;
+            height: 155px;
+            margin-bottom: 6px;
+            /* 	float: right; */
+            overflow: hidden;
+        }
+
+        .newlm_pic3 {
+            width: 305px;
+            height: 155px;
+            margin: 0px 17px 6px 0px;
+            float: left;
+            overflow: hidden;
+        }
+
+        .newlm_pic4 {
+            width: 305px;
+            height: 155px;
+            margin: 0px 10px 6px 0px;
+            float: left;
+            overflow: hidden;
+        }
+
+        .newlm_pic5 {
+            width: 600px;
+            height: 155px;
+            margin-bottom: 6px;
+            float: right;
+            overflow: hidden;
+        }
+    </style>
+    <!-- css效果 -->
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style-type: none;
+        }
+
+        #slide {
+            height: 400px;
+            width: 1280px;
+            margin: 10px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pic-list {
+            width: 6400px;
+            height: 400px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .pic-list li {
+            float: left;
+        }
+
+        .pic-list li img {
+            width: 1280px;
+            height: 400px;
+        }
+
+        .btn {
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            height: 50px;
+            width: 50px;
+            /*opacity: 0.5;*/
+            border-radius: 5px;
+            cursor: pointer;
+            user-select: none;
+            background: white;
+            font-size: 25px;
+            line-height: 50px;
+            text-align: center;
+            transition: all 1s;
+            transform: translateY(-50%);
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .icon-list {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .icon-list li {
+            float: left;
+            margin: 0 5px;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+        }
+
+        .icon-list .active {
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="index" id="app">
+    <!-- 导入头部   导航栏 -->
+    {include file="common/index"}
+
+    <!--php渲染轮播图开始-->
+    <div class="banner">
+        <div id="slide">
+            <ul class="pic-list">
+                {volist name="recArt" id="art"}
+                <li><img src="{$art.pic}" alt="{$art.title}"></li>
+                {/volist}
+            </ul>
+            <div class="btn next" style="line-height: 125%;">&gt;</div>
+            <div class="btn prev" style="line-height: 125%;">&lt;</div>
+            <ul class="icon-list">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--工作动态、通知公告-->
+    <div class="news">
+        <div class="newsContainer clearfix">
+            <!-- 工作动态 -->
+            <div class="column jdxw">
+                <!-- 头部写死 -->
+                <div class="col-title">
+                    <i class="icon icon-jdxw"></i>
+                    <span class="cn">工作动态</span>
+                    <span class="en">Work &amp; Dynamics </span>
+                    <!-- 此处有个跳转 -->
+                    <a href="#" class="more">更多&gt;&gt;</a>
+                </div>
+                <!-- 渲染内容 -->
+                <div id="news" class="col-cards">
+                    <!-- 循环渲染获取的htmls-->
+                    <div class="card" style="margin: 0 10px;" v-for="(gzdt,i) in htmls">
+                        <!-- a标签 渲染绑定 link 动态链接 title动态标题-->
+                        <a @click="gzdtitemclick(gzdt.id)" target="_blank" :title="gzdt.title">
+                            <!-- 以htmls的下标为图片下标获取imgs中的src图片链接 -->
+                            <img class="lazy" width="345" height="209" :src="imgs[i].src">
+                            <!-- 把title内容渲染到界面上 -->
+                            <p style="font-size: 14px;">{{gzdt.title}}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 通知公告 -->
+            <div id="notify" class="column zhxw">
+                <div class="col-title">
+                    <i class="icon icon-zhxw"></i>
+                    <span class="cn">通知公告</span>
+                    <span class="en">NoticeAnnouncement</span>
+                    <span class="fr">
+                            <!-- 此处有一个跳转 -->
+								<a class="more" href="#">更多&gt;&gt;</a>
+							</span>
+                </div>
+
+                <ul class="news-list">
+                    <!--渲染开始 (通知公告)-->
+                    <!-- 从list列表开始循环提取     tzgg变量 -->
+                    <li v-for="tzgg in list">
+                        <!-- tzgg变量中有   link 链接路径   title 标题    created_by_time 创建时间 -->
+                        <a @click="tzggitemclick(tzgg.id)" target="_blank" :title="tzgg.title">{{tzgg.title}}</a>
+                        <span class="date">{{tzgg.created_by_time.substr(0,10)}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 热点新闻 -->
+    <div class="xsrw">
+        <div class="xsrwContainer">
+            <!-- 热点专题的标题图片-->
+            <div class="rdzt">
+                <div class="dl fl">
+                    <img src="__INDEXIMG__/rdzt.png" alt="">
+                </div>
+                <!-- 热点专题 -->
+                <div class="dr fl">
+                    <div class="hl-main5-content">
+                        <div class="hl-main5-content1" id="rdzt">
+                            <!-- vue渲染数据 -->
+                            <ul>
+                                <li v-for="(li,i) in htmls">
+                                    <a :title="li.title" :href="li.href" target="_blank">
+                                        <img class="lazy" :src="imgs[i].src" width="241" height="125"
+                                             style="display: inline;">
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- 更多按钮,目前不知道更多到哪 -->
+                            <a href="#" target="_blank" class="more2">更多&gt;&gt;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 一个长条图片,不知道用来干嘛的 -->
+            <div class="changjianBan">
+                <a href="#" title="" target="_blank">
+                    <img src="__INDEXIMG__/changjiangbanner.png">
+                </a>
+            </div>
+
+            <!-- 学术研究头部 -->
+            <div class="column xk" id="Research">
+                <div class="col-title">
+                    <i class="icon icon-xkky"></i>
+                    <span class="cn">学术<i>·</i>研究</span>
+                    <span class="en">Research and Disciplinary Development</span>
+                    <!-- 此处有一个链接 -->
+                    <a target="_blank" class="more" href="#">更多&gt;&gt;</a>
+                </div>
+                <!-- 学术研究头部结束 -->
+                <div class="col-cards">
+                    <!-- 学术研究开始渲染       获取htmls变量   赋值xsyj变量    i做下标 -->
+                    <div class="card" style="margin: 0 10px;" v-for="(xsyj,i) in htmls">
+                        <!-- link 链接      title 标题 -->
+                        <a :href="xsyj.link" target="_blank" :title="xsyj.title">
+                            <!-- imgs[i].src -->
+                            <img class="lazy" width="345" height="209" :src="imgs[i].src">
+                            <p style="font-size: 14px;">{{xsyj.title}}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 高层声音开始 -->
+            <div class="column rw" id="High">
+                <div class="col-title">
+                    <i class="icon icon-cdrw"></i>
+                    <span class="cn">高层声音</span>
+                    <span class="en">High-Level Voice</span>
+                    <!-- 这里有个链接 -->
+                    <a href="#" target="_blank" class="more">更多&gt;&gt;</a>
+                </div>
+
+                <!-- 开始渲染    变量获取        htmls       赋值gcsy -->
+                <ul class="news-list" v-for="(gcsy,i) in htmls">
+                    <li>
+                        <!--    title  变量 -->
+                        <a href="#" target="_blank" :title="gcsy.title">
+                            <div class="dl">
+                                <!-- imgs[i].src 变量 -->
+                                <img class="lazy" width="98" height="96" :src="imgs[i].src" style="display: inline;">
+                            </div>
+                            <div class="dr">
+                                <!-- title变量 -->
+                                <div class="l1 elps">{{gcsy.title}}</div>
+                                <div class="l2">
+                                    <!-- imgs[i].text变量 -->
+                                    {{imgs[i].text}}
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 会员风采的图片 -->
+    <div id="hyfc" class="spwx" style="height: 340px;">
+        <div class="spwxContainer">
+            <div class="col-title">
+                <i class="icon icon-spsd"></i>
+                <span class="cn">会员风采</span>
+                <span class="en">Membership</span>
+                <a href="#" target="_blank" class="more">更多&gt;&gt;</a>
+            </div>
+            <div class="contentpart2">
+                <div class="newlm">
+                    <label class="card" style="margin: 0 10px;" v-for="(hy,i) in htmls">
+                        <!-- a标签 渲染绑定 link 动态链接 title动态标题-->
+                        <a :href="hy.link" target="_blank" :title="hy.title">
+                            <!-- 以htmls的下标为图片下标获取imgs中的src图片链接 -->
+                            <img class="lazy" width="345" height="209" :src="imgs[i].src">
+                            <!-- 把title内容渲染到界面上 -->
+                            <p style="font-size: 14px;">{{hy.title}}</p>
+                        </a>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 友情链接 -->
+    <div class="container">
+        <div class="row link-p">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="link-title">
+                    <div class="link-pic">
+                    </div>
+                    <div class="link-name">
+                        友情链接 /LINK
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-xs-12 link-spacing">
+                <div class="row link-left">
+                    <a href="#" target="_blank" alt="中国教育部">
+                        <div class="col-lg-2 col-lg-offset-1 col-md-2 col-sm-4 col-xs-4 cn_ed">
+                        </div>
+                    </a>
+                    <a href="#" target="_blank" alt="江苏教育">
+                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 js_ed">
+                        </div>
+                    </a>
+                    <a href="#" target="_blank" alt="江苏职教网">
+                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 js_vc">
+                        </div>
+                    </a>
+                    <a href="#" target="_blank" alt="教育">
+                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 zj_ed">
+                        </div>
+                    </a>
+                    <a href="#" target="_blank" alt="教育">
+                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 js_un">
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12 col-xs-12 link-spacing">
+                <div class="row">
+                    <div class="col-lg-7 col-md-4 col-sm-6 col-xs-7">
+                        <!-- Split button -->
+                        <div class="btn-group dropup">
+                            <button type="button" class="btn btn-text btn-color dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                其他教育机构链接 <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <!-- 链接写死 -->
+                                <li><a href="#" target="_blank">中国教育信息网</a></li>
+                                <li><a href="#" target="_blank">中国职业教育与成人教育网</a></li>
+                                <li><a href="#" target="_blank">中国教育信息网</a></li>
+                                <li><a href="#" target="_blank">中国教育新锋网</a></li>
+                                <li><a href="#" target="_blank">江苏教育评估</a></li>
+                                <li><a href="#" target="_blank">职成教育在线</a></li>
+                                <li><a href="#" target="_blank">镇江职教</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-4 col-sm-4 col-xs-5">
+                        <div class="btn-group dropup" data-spy="scroll" id="dropdownMenu2" aria-haspopup="true"
+                             aria-expanded="false">
+                            <button type="button" class="btn btn-text btn-color dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                兄弟学校 <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">兄弟学校</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 链接底部 -->
+    {include file="public/footer"}
+
+</div>
+
+<script src="__INDEXJS__/jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        //工作动态的JS
+        var vm2 = new Vue({
+            el: "#news",
+            data: {
+                lb: "工作动态",
+                htmls: [],
+                imgs: []
+            },
+            methods: {
+                setContent: function (content) {
+                    $("#myModalLabel_content_detail").html(content.title)
+                    $("#myModal_content_detail #content_detail_html").html(content.content)
+                },
+                gzdtitemclick: function (id) {
+                    console.log(id)
+                    $.ajax({
+                        url: '/index/pagenav/newsContent',
+                        dataType: 'json',
+                        data: {
+                            contentid: id
+                        },
+                        async: false,
+                        type: 'GET',
+                        error: () => {
+                            alert("请求错误!");
+                        }
+                    });
+                }
+
+            },
+            mounted: function () {
+                $.ajax({
+                    url: '/index/news/workingtrends',
+                    dataType: 'json',
+                    async: false,
+                    type: 'GET',
+                    success: (res) => {
+                        result = res.result;
+                        var datas = [];
+                        var imgs = [];
+                        for (var i in result) {
+                            if (i == 2) break;
+                            datas.push({
+                                link: '#',
+                                id: result[i].id,
+                                title: result[i].title
+                            })
+                            imgs.push({
+                                src: result[i].pic
+                            })
+                        }
+                        this.$set(this, 'imgs', imgs)
+                        this.$set(this, 'htmls', datas)
+                    },
+                    error: () => {
+                        alert("请求错误!");
+                    }
+                });
+            }
+        })
+        //通知公告栏目数据读取
+        var vm = new Vue({
+            el: "#notify",
+            data: {
+                lb: "通知公告",
+                list: []
+            },
+            methods: {
+                setContent: function (content) {
+                    $("#myModalLabel_content_detail").html(content.title)
+                    $("#myModal_content_detail #content_detail_html").html(content.content)
+                },
+                tzggitemclick: function (id) {
+                    console.log("contentid:"+id);
+                    $.ajax({
+                        url: '/index/pagenav/newsContent',
+                        data: {
+                            contentid: id
+                        },
+                        dataType: 'json', //服务器返回json格式数据
+                        async: false,
+                        type: 'GET', //HTTP请求类型
+                        error: function () {
+                            alert("请求错误!");
+                        }
+                    });
+                }
+            },
+            mounted: function () {
+                $.ajax({
+                    url: '/index/news/notice',
+                    data: {
+                        lb: "通知公告"
+                    },
+                    dataType: 'json', //服务器返回json格式数据
+                    async: false,
+                    type: 'GET', //HTTP请求类型
+                    success: (res) => {
+                        result = res.result;
+                        var list = [];
+                        for (var i in result) {
+                            list.push({
+                                link: '#',
+                                title: result[i].title,
+                                id: result[i].id,
+                                created_by_time: result[i].createtime
+                            })
+                        }
+                        // 给哪个vue的哪个变量赋值什么
+                        // console.log(list)
+                        this.$set(this, 'list', list);
+                    },
+                    error: function (xhr, type, errorThrown) {
+
+                    }
+                });
+
+            }
+        })
+        //学术研究
+        var vm3 = new Vue({
+            el: "#Research",
+            data: {
+                lb: "学术研究",
+                htmls: [],
+                imgs: []
+            },
+            methods: {
+                setContent: function (content) {
+                    $("#myModalLabel_content_detail").html(content.title)
+                    $("#myModal_content_detail #content_detail_html").html(content.content)
+                }
+            },
+            mounted: function () {
+                $.ajax({
+                    url: '/index/news/academicResearch',
+                    data: {
+                        lb: "学术研究"
+                    },
+                    dataType: 'json', //服务器返回json格式数据
+                    async: false,
+                    type: 'post', //HTTP请求类型
+                    success: (res) => {
+                        /*
+                       htmls:   link    title
+                       imgs: src
+                        */
+                        result = res.result;
+                        var datas = [];
+                        var imgs = [];
+                        for (var i in result) {
+                            if (i == 4) break;
+                            datas.push({
+                                link: '#',
+                                title: result[i].title
+                            })
+                            imgs.push({
+                                src: result[i].pic
+                            })
+                        }
+                        this.$set(this, 'imgs', imgs)
+                        this.$set(this, 'htmls', datas)
+                    },
+                    error: function (xhr, type, errorThrown) {
+
+                    }
+                });
+
+            }
+        })
+        //高层声音
+        var vm4 = new Vue({
+            el: "#High",
+            data: {
+                lb: "高层声音",
+                htmls: [],
+                imgs: []
+            },
+            methods: {
+                setContent: function (content) {
+                    $("#myModalLabel_content_detail").html(content.title)
+                    $("#myModal_content_detail #content_detail_html").html(content.content)
+                }
+            },
+            mounted: function () {
+                $.ajax({
+                    url: '/index/news/highLevelVoice',
+                    data: {
+                        lb: "高层声音"
+                    },
+                    dataType: 'json', //服务器返回json格式数据
+                    async: false,
+                    type: 'post', //HTTP请求类型
+                    success: (res) => {
+                        /*
+                        htmls: link     title
+                        imgs[i]: src text
+                        */
+                        result = res.result;
+                        // console.log(res)
+                        var htmls = [];
+                        var imgs = [];
+
+                        for (var i in result) {
+                            if (i == 5) break;
+                            htmls.push({
+                                link: '#',
+                                title: result[i].title
+                            });
+                            imgs.push({
+                                src: result[i].pic,
+                                text: result[i].text
+                            });
+                        }
+
+                        this.$set(this, 'imgs', imgs)
+                        this.$set(this, 'htmls', htmls)
+
+                    },
+                    error: function (xhr, type, errorThrown) {
+
+                    }
+                });
+
+            }
+        })
+        //会员风采
+        var vm5 = new Vue({
+            el: '#hyfc',
+            data: {
+                lb: "会员风采",
+                htmls: [],
+                imgs: []
+            },
+            methods: {
+                setContent: function (content) {
+                    $("#myModalLabel_content_detail").html(content.title)
+                    $("#myModal_content_detail #content_detail_html").html(content.content)
+                }
+            },
+            mounted: function () {
+                $.ajax({
+                    url: '/index/news/memberStyle',
+                    dataType: 'json',
+                    async: false,
+                    type: 'GET',
+                    success: (res) => {
+                        result = res.result;
+                        // console.log(result)
+                        var datas = [];
+                        var imgs = [];
+                        for (var i in result) {
+                            if (i == 4) break;
+                            datas.push({
+                                link: '#',
+                                title: result[i].title
+                            })
+                            imgs.push({
+                                src: result[i].pic
+                            })
+                        }
+                        // console.log(imgs)
+                        this.$set(this, 'imgs', imgs)
+                        this.$set(this, 'htmls', datas)
+                    },
+                    error: () => {
+                        alert("请求错误!");
+                    }
+                });
+            }
+        })
+        //热点专题
+        var vm6 = new Vue({
+            el: '#rdzt',
+            data: {
+                lb: "会员风采",
+                htmls: [],
+                imgs: []
+            },
+            methods: {
+                setContent: function (content) {
+                    $("#myModalLabel_content_detail").html(content.title)
+                    $("#myModal_content_detail #content_detail_html").html(content.content)
+                }
+            },
+            mounted: function () {
+                $.ajax({
+                    //热点专题暂无接口 借用工作动态的
+                    url: '/index/news/workingtrends',
+                    dataType: 'json',
+                    async: false,
+                    type: 'GET',
+                    success: (res) => {
+                        result = res.result;
+                        // console.log(result)
+                        var datas = [];
+                        var imgs = [];
+                        for (var i in result) {
+                            if (i == 4) break;
+                            datas.push({
+                                link: '#',
+                                title: result[i].title
+                            })
+                            imgs.push({
+                                src: result[i].pic
+                            })
+                        }
+                        // console.log(imgs)
+                        this.$set(this, 'imgs', imgs)
+                        this.$set(this, 'htmls', datas)
+                    },
+                    error: () => {
+                        alert("请求错误!");
+                    }
+                });
+            }
+        })
+
+    })
+</script>
+</body>
+
+</html>

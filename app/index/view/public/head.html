@@ -1,0 +1,43 @@
+<div id="head">
+    <!--头部logo-->
+
+</div>
+<div class="navBox">
+    <div class="nav-menu">
+        <a href="#"><img src="__INDEXIMG__/nav-home.png"></a>
+        <ul class="nav">
+            <li style="display:block">
+                <a href="index.html">首页</a>
+            </li>
+            {volist name="category" id="cate"}
+            <li>
+                <a href="http://localhost/yb/wyhjj.html">{$cate.name}</a>
+            </li>
+            {/volist}
+            <li>
+                <a href="page.html">工作动态</a>
+
+            </li>
+            <li>
+                <a href="page.html">学术研究</a>
+            </li>
+
+            <li>
+                <a href="page.html">高层声音</a>
+
+            </li>
+            <li>
+                <a href="page.html">会员风采</a>
+
+            </li>
+            <li>
+                <a href="{:url('xxzx/index')}" target="_blank" title="信息中心">信息中心</a>
+
+            </li>
+            <li>
+                <a href="page.html">联系我们</a>
+            </li>
+
+        </ul>
+    </div>
+</div>

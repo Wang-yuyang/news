@@ -1,0 +1,8 @@
+新课导入
+新课讲授
+练习应用
+归纳总结
+布置作业
+板书设计
+
+--logpath c:\data\log\MongoDB.log --logappend --dbpath c:\data\db --directoryperdb --serviceName MongoDB --install

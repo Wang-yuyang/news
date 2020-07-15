@@ -1,0 +1,23 @@
+<div id="head">
+    <!--
+            这是一个被渲染的首页
+            包括头部logo
+    -->
+</div>
+<div class="navBox">
+    <div class="nav-menu">
+        <a href="#"><img src="__INDEXIMG__/nav-home.png"></a>
+        <ul class="nav">
+            <li style="display:block">
+                <a href="index.html">首页</a>
+            </li>
+            {volist name="categorys" id="cate"}
+            <li>
+                <!--<a href="/index/{if condition="$cate['type'] eq 1"}artlist{elseif condition="$cate['type'] eq 3" /}imglist{else/}page{/if}/index/id/1" target="_blank">{$cate.name}</a>-->
+                <a href="{$cate.href}" target="_blank">{$cate.name}</a>
+            </li>
+
+            {/volist}
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>layui</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="__LAYUI__/lib/layui-v2.5.5/css/layui.css" media="all">
+		<link rel="stylesheet" href="__LAYUI__/css/public.css" media="all">
+		<style>
+			body {
+            background-color: #ffffff;
+        }
+    </style>
+	</head>
+	<body>
+		<div class="layui-form layuimini-form">
+			<form class="layui-form" action="" id="authoritiesEditForm">
+
+
+
+				<input type="hidden" name="id" value="{$news.id}">
+
+
+				<div class="layui-form-item">
+					<label class="layui-form-label required">新闻类别</label>
+					<div class="layui-input-block">
+						<select name="category" id="category" lay-verify="required" lay-search>
+						<option value="0">=选择角色=</option>
+						 {volist name="news" id="menu"}
+							  <option value="{$menu.category}" 
+		{if condition="$menu['category'] eq $news.id"}selected{/if}>{$menu['category']} </option>
+						   {/volist}
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label required">新闻标题</label>
+					<div class="layui-input-block">
+						<input type="text" name="title" lay-verify="required" lay-reqtext="新闻标题不能为空" placeholder="请输入新闻标题" value="{$news.title}" class="layui-input">
+						<tip>填写自己管理账号的密码。</tip>
+					</div>
+				</div>
+			
+					<div class="layui-form-item layui-form-text">
+						<label class="layui-form-label">新闻正文</label>
+						<div class="layui-input-block" style="height: 300px;">
+							<textarea name="content" id="textareademo" style="height: 100%;" class="layui-textarea" placeholder="请输入备注信息" >{$news.content}</textarea>
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<button class="layui-btn" lay-submit lay-filter="saveBtn">确认保存</button>
+						</div>
+					</div>
+			</form>
+		</div>
+		<script src="__LAYUI__/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+		<script>
+			layui.use(['form', 'layedit'], function() {
+				var form = layui.form,
+					layer = layui.layer,
+					layedit = layui.layedit,
+					$ = layui.$;
+				// var txt = layedit.build("textareademo");
+
+				//监听提交
+				form.on('submit(saveBtn)', function(data) {
+					// var index = parent.layer.getFrameIndex(window.name); 
+					data = data.field;
+					console.log(data);
+					$.ajax({
+						type: 'post',
+						data: data,
+						url: "{:url('admin/News/update')}",
+						success: function(data) {
+							layer.msg("修改成功", function() {
+								var iframeIndex = parent.layer.getFrameIndex(window.name);
+								parent.layer.close(iframeIndex);
+
+								window.parent.location.reload(); //重新加载父窗口数据
+							});
+
+
+						}
+					});
+					return false;
+					
+				});
+
+			});
+		</script>
+	</body>
+</html>

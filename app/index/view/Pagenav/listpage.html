@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+        文章列表页
+        用于显示关于某个方面所有相关文章的列表
+        比如显示学术研究或者高层声音列表
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*设置网页边框以及网页背景*/
+        html, body {
+            margin: 0px;
+            padding: 0px;
+            background-color: #e6e6e6;
+        }
+    </style>
+</head>
+<body>
+<!-- 导入头部   导航栏 -->
+
+<!--外层盒子-->
+<div class="maxbox">
+    {volist name="TitleAndTime" id="data"}
+    <div class="box">
+        <span class="title">{$data.title}</span>
+        <span class="createtime">{$data.createtime}</span>
+    </div>
+    {/volist}
+
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+        这是文章页
+        由PHP渲染,谁需要给谁用
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>文章页</title>
+    <style>
+        /*设置背景颜色以及网页边距*/
+        html,
+        body {
+            border: 0px;
+            margin: 0px;
+            background-color: rgb(230, 230, 230);
+        }
+
+        /*内容盒子样式*/
+        .box {
+            margin-top: 50px;
+            width: 70%;
+            margin-left: 15%;
+        }
+
+        /*标题样式*/
+        .title {
+            font-size: 28px;
+            text-align: center;
+            height: 90px;
+            line-height: 90px;
+        }
+
+        /*发布人样式*/
+        .author {
+            padding: 5px;
+            font-size: 12px;
+        }
+
+        /*关键字样式*/
+        .keywords {
+            padding: 5px;
+            font-size: 12px;
+        }
+
+        /*发布时间样式*/
+        .createtime {
+            padding: 5px;
+            font-size: 12px;
+        }
+
+        /*内容部分样式*/
+        .item {
+            font-size: 18px;
+            margin-top: 50px;
+            padding: 0px 25px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    /*    规定图片格式*/
+        img{
+            width: 60%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<!-- 导入头部   导航栏 -->
+
+<!--tp5模板渲染发现报错：error=>未定义数组索引   -->
+<!-- 标题：{$content.0.title} 编辑人：{$content.0.author} 关键字：{$content.0.keywords} 发布时间：{$content.0.createtime} -->
+<div class="box">
+    <!-- 整个页面 -->
+    <!-- 页面标题 -->
+    <div class="title">{$content.0.title}</div>
+    <div style="text-align: center">
+    <!-- 编辑人 -->
+    <span class="author">编辑人:<span>{$content.0.author}</span></span>
+    <!-- 关键字 -->
+    <span class="keywords">关键字:<span>{$content.0.keywords}</span></span>
+    <!-- 发布时间 -->
+    <span class="createtime">发布时间:{$content.0.createtime}</span>
+    </div>
+    <!-- 内容部分 -->
+    <pre class="item">
+        {$content.0.content}
+    小的时候，我经常画画，我的桌子、椅子、本子可遭了殃，它们被我画得乱七八糟、坑坑洼洼、满具伤痕，都被画上了小人儿和花草虫鱼、
+溪河海洋与大树，合起来仿佛是一本大画册。 数月后，我发现了我画画的“高”水平，便请求于父母待发展。我现在画的漫画不错就是只能
+画女孩，画花朵画得不错，就是画几朵就累了。总而言之，言而总之，我的画技还要接受正规训练。不过我的画技的确比其它人高点儿(人
+也需要一些自信噢)。许多人都这么说，于是，我当画家的想法就此生成。 我最喜欢的伟人是达·芬奇，他是一个天才画家，我也想像他那
+样画得举世成名(虽说这个梦想与现实的差距实在是太大了)，我还是慢慢努力的好。
+　　目标是当画家，这已经决定了。可是我该怎么做呢? 当画家，最重要的几点就是耐心、坚持认真、还要有灵感。当然，最最最起码的——要
+学。可是我这人性子急，没耐心，又马虎，还没受过正规训练，除了艺术感强、色感强外，看不出什么比其它人更具有绘画天赋的了。 因为我
+的绘画方式还需要完美，所以，为了我的目标，我的理想，今后一定要好好努力! 我决定在暑假的时候学习绘画，静下心来认真学、坚持学、专
+心应对，画许多优秀的画，当一名画技高、举世闻名的画家。我相信，只要我好好努力，认真学习画画，我的画家梦就会变为现实的。 我的理
+想是当一名优秀的画家，我正在向这个方向努力，尽管有可能失败，但我还是要努力。
+        </pre>
+</div>
+</body>
+
+</html>
