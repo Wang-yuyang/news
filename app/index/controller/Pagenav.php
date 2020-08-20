@@ -64,4 +64,4 @@ class Pagenav extends Controller
         $this->redirect('/index.php/admin/Information/');
     }
 
-}
+}   qwertyuiop[]\rrrrrrrrrrrrrrrr
